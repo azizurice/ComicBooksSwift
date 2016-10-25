@@ -13,14 +13,13 @@ class GridViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-   // var apps = TIBApps.getAllApps()
     
     let detailSegueIdentifier="ShowDetailSegue"
-   // var passCharacter = ComicCharacter(title: "Headsup ", detail: "Beginner Detail", imageName: "1")
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Comic Book"
         collectionView.dataSource = self
        // collectionView.estimatedRowHeight = 165
         ///collectionView.rowHeight = UITableViewAutomaticDimension

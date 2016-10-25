@@ -31,6 +31,7 @@ override func viewDidLoad() {
     //getCharactersFromMarvel()
     getCharactersUsingAlamofire();
     
+    navigationItem.title = "Comic Book"
     tableView.dataSource = self
     tableView.estimatedRowHeight = 165
     tableView.rowHeight = UITableViewAutomaticDimension
