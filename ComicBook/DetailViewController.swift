@@ -7,47 +7,36 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController {
   
     
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBOutlet weak var detailLabelView: UILabel!
-    var image : UIImage!
-    var imageTitle: String?
-    var imageDetail: String?
-    //var index : Int?
-    var app : ComicCharacter!
+    @IBOutlet weak var captionView: UILabel!
+   
     
-   // var comicCharacter: ComicCharacter?
+    @IBOutlet weak var detailLabelView: UILabel!
+    
+   
+    var app : Character!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  let app = apps[index!]
-        
-        
-      //  if let comicCharacter = ComicCharacter {
-            
-        //    navigationItem.title = comicCharacter.title?.capitalized
-          //  imageView.image = UIImage(named: comicCharacter. .name!.lowercased())
-           //   navigationItem.title = imageTitle?.capitalized
-  
-     //   navigationItem.title = app.title
-         //navigationItem.title = app?.title.capitalized
-             //
-        imageView.image = UIImage(named: app.imageName)
-  
-        
-              detailLabelView.text = app.detail
+     
+         imageView.image = app.thumbnail
+         captionView.text = app.title
+         detailLabelView.text = app.detail
+        detailLabelView.adjustsFontSizeToFitWidth = true
               
-        
-              //  UIImage(named: image)
-       // }
+       
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }
