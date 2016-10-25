@@ -13,9 +13,10 @@ class GridViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var apps = TIBApps.getAllApps()
+   // var apps = TIBApps.getAllApps()
+    
     let detailSegueIdentifier="ShowDetailSegue"
-    var passCharacter = ComicCharacter(title: "Headsup ", detail: "Beginner Detail", imageName: "1")
+   // var passCharacter = ComicCharacter(title: "Headsup ", detail: "Beginner Detail", imageName: "1")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +34,15 @@ extension GridViewController : UICollectionViewDataSource,UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return apps.count
+        return DataSource.characters.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! AppCollectionViewCell
-       
-       // cell.backgroundColor = UIColor.red
         
-        let app = apps[indexPath.row]
+        let comicDetails = DataSource.characters[indexPath.row]
         
-        
-        cell.appImageView.image = UIImage(named: app.imageName)
-        cell.appLabelView.text = app.title
-        
+        cell.app = comicDetails
         
         return cell
     }
@@ -66,22 +62,19 @@ extension GridViewController : UICollectionViewDataSource,UICollectionViewDelega
     }
     
     // MARK:- prepareForSegue
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        // retrieve selected cell & fruit
-//        
-//        if let indexPath = getIndexPathForSelectedCell() {
-//            let app = apps[indexPath.row]
-//            if (segue.identifier == detailSegueIdentifier) {
-//                print("The width of someResolution is \(app.detail)")
-//                //    let nav=segue.destination as! UINavigationController
-//             
-//                let detailViewController = segue.destination as! DetailViewController
-//                // Pass on the data to the Detail ViewController by setting it's indexPathRow value
-//                
-//                detailViewController.app = app
-//            }
-//      }
-//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // retrieve selected cell & fruit
+        
+        if let indexPath = getIndexPathForSelectedCell() {
+           
+            let app = DataSource.characters[(indexPath.row)]
+            let detailViewController = segue.destination as! DetailViewController
+                // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+                
+                detailViewController.app = app
+            }
+      }
+    
 }

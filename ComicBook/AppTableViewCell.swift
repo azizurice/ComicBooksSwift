@@ -35,19 +35,7 @@ class AppTableViewCell: UITableViewCell {
             appLabelView.layer.shadowOpacity = 1
         }
     
-//    func downloadImage( urlString: String){
-//        Alamofire.download(urlString).responseData { response in
-//            if let data = response.result.value {
-//                self.appImageView.image = UIImage(data: data)
-//                  = UIImage(data: data)
-//                self.appImageView.isHidden = false
-//                
-//                print ("Test 1");
-//                
-//            }
-//        }
-//        
-//    }
+
     
     
     private func downloadImage(urlString: String) {
