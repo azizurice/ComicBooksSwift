@@ -1,19 +1,15 @@
 PODS:
   - Alamofire (4.0.1)
-  - AlamofireNetworkActivityIndicator (2.0.1):
-    - Alamofire (~> 4.0)
   - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - AlamofireNetworkActivityIndicator (~> 2.0)
   - MBProgressHUD (~> 1.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  AlamofireNetworkActivityIndicator: 3e55069ada3e1ff7703665156429eedcdfea0bc1
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: a0e1941162562d63abbf17812374c7e74d910f82
+PODFILE CHECKSUM: 8703060332fa2bcfb2a00d5cfd45aaf6abb6c042
 
 COCOAPODS: 1.1.1
