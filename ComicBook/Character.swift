@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Character{
+class Character{
 
     var title : String?
     var detail : String?
