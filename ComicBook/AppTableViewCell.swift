@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AppTableViewCell: UITableViewCell {
 
     
@@ -15,14 +16,17 @@ class AppTableViewCell: UITableViewCell {
     @IBOutlet weak var appImageView: UIImageView!
     
         
-        var app : ComicCharacter! {
+        var app : Character! {
             didSet {
                 self.updateUI()
             }
         }
         
         func updateUI() {
-            appImageView.image = UIImage(named: app.imageName)
+            downloadImage(urlString: app.characterURL!)
+            
+             appImageView.layer.borderColor = UIColor.red.cgColor
+           
             appLabelView.text = app.title
             
             appLabelView.layer.shadowColor = UIColor.black.cgColor
@@ -30,8 +34,41 @@ class AppTableViewCell: UITableViewCell {
             appLabelView.layer.shadowRadius = 6
             appLabelView.layer.shadowOpacity = 1
         }
-        
     
+//    func downloadImage( urlString: String){
+//        Alamofire.download(urlString).responseData { response in
+//            if let data = response.result.value {
+//                self.appImageView.image = UIImage(data: data)
+//                  = UIImage(data: data)
+//                self.appImageView.isHidden = false
+//                
+//                print ("Test 1");
+//                
+//            }
+//        }
+//        
+//    }
+    
+    
+    private func downloadImage(urlString: String) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.appImageView.image = image
+                self.app.thumbnail =  image
+               
+            })
+            
+        }).resume()
+    }
+    
+
     
 
 }
