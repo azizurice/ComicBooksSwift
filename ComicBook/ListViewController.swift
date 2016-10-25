@@ -7,21 +7,30 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
+
 
 class ListViewController: UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
    
+    @IBOutlet weak var contentView: UIView!
+   
     
-var apps = TIBApps.getAllApps()
+    
+
+
 let detailSegueIdentifier="ShowDetailSegue"
-    var passCharacter = ComicCharacter(title: "Headsup ", detail: "Beginner Detail", imageName: "1")
+ 
 
 override func viewDidLoad() {
     super.viewDidLoad()
-    setUIEnabled(enabled: false)
-    getCharactersFromMarvel()
+    setUIEnabled(enabled: true)
+    //getCharactersFromMarvel()
+    getCharactersUsingAlamofire();
     
     tableView.dataSource = self
     tableView.estimatedRowHeight = 165
@@ -30,80 +39,131 @@ override func viewDidLoad() {
 }
 private func setUIEnabled(enabled: Bool){
     
+    tableView.isHidden = enabled
+    contentView.isHidden = !enabled
+    
         
 }
-    private func getCharactersFromMarvel(){
-        
-       let methodParameters = [Constants.MarvelParameterKeys.TS :Constants.MarvelParameterValues.ts,
-                               Constants.MarvelParameterKeys.APIKey : Constants.MarvelParameterValues.APIKey,
-                               Constants.MarvelParameterKeys.HASH:getHash()]
+    private func getCharactersUsingAlamofire(){
+        showLoadingHUD();
+         let urlTempString = "http://gateway.marvel.com/v1/public/comics?ts=17&apikey=c30573ac063f8a33b1de98dffc550caf&hash=7f2feb587bc9e1e5353669b50619baaf&limit=11"
+        let url=URL(string: urlTempString)
+        Alamofire.request(url!).responseJSON { response in
+            
+//            guard  let strongSelf = self else{
+//                return
+//            }
+            
+            if let JSON = response.result.value {
+                //print("JSON: \(JSON)")
+              self.retrieveFromJSON(jsonObject: JSON as! NSDictionary)
+              }
+            self.hideLoadingHUD()
+        }
     
-        let urlString = Constants.Marvel.APIBaseURL + escapedParameters(parameters: methodParameters as [String : AnyObject])
-        print("The MARVEL url is : \(urlString)")
+    }
+    
+    func retrieveFromJSON(jsonObject : NSDictionary){
+        let jsonData = jsonObject[Constants.MarvelResponseKeys.Data] as! NSDictionary
+        let resultsArray = jsonData[Constants.MarvelResponseKeys.Results] as! NSArray
         
-        let urlTempString = "http://gateway.marvel.com/v1/public/comics?ts=17&apikey=c30573ac063f8a33b1de98dffc550caf&hash=7f2feb587bc9e1e5353669b50619baaf&limit=16"
-        let url=URL(string: urlTempString)!
-        let request = URLRequest(url : url)
-        print (" Come up to here ")
-        let task = URLSession.shared.dataTask(with: request){(data,response, error) in
-            //  print (" Come up to here ")
-       // if an error occurs, print it
-            func displayError(error: String){
-                print(error)
-                print("URL at time of error : \(url)")
-                self.setUIEnabled(enabled: true)
-                
-            }
-        if error == nil{
-            if let data = data {
-                let parsedResult :[String :AnyObject]!
-                do{
-                    parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-                } catch {
-                
-                    displayError(error: "Could not parse the data JSON '\(data)'")
-                    return
-                }
-                 // print (parsedResult)
-               
-                
-                if let jasonData = parsedResult[Constants.MarvelResponseKeys.Data] as? [String:AnyObject],
-                    
-                     let resultsArray = jasonData[Constants.MarvelResponseKeys.Results] as?[[String:AnyObject]]{
-                    
-                     print(" First Item ")
-                     print(resultsArray[0])
-                    
-//                    for comicBook in resultsArray {
-//                        print(comicBook)
-////                        let title = comicBook[Constants.MarvelResponseKeys.Title] as! String
-////                        let description = comicBook[Constants.MarvelResponseKeys.Description] as? String
-////                        let jsonThumbnail = comicBook[Constants.MarvelResponseKeys.Thumbnail] as! [String:AnyObject]
-////                        let thumbnailPath = jsonThumbnail[Constants.MarvelResponseKeys.Path] as? String
-////                        let thumbnailExtension = jsonThumbnail[Constants.MarvelResponseKeys.Extension] as? String
-////                        let characterURL = thumbnailPath! + "/portrait_large."  + thumbnailExtension! as String
-//                        
-//                       // Character(title: title, detail: description, characterURL: characterURL)
-//                      //  DataSource.characters.append(Character(title: title, detail: description!, characterURL: characterURL))
-//                    }
-                    
-                    
-               //  print(jasonData)
-                }
-             
-                for c in DataSource.characters {
-                    print(c.title! + " " + c.detail! + " " + c.characterURL!)
-                }
-                
-            }
+        for index in 0..<resultsArray.count{
+            let comicBook = resultsArray[index] as! NSDictionary
             
+            let title = comicBook[Constants.MarvelResponseKeys.Title] as! String
+            var description = comicBook[Constants.MarvelResponseKeys.Description] as? String
             
-          
+            if (self.isObjectNil(object: description as AnyObject!)){
+                description = "No details available"
+            }
+            let jsonThumbnail = comicBook[Constants.MarvelResponseKeys.Thumbnail] as! [String:AnyObject]
+            let thumbnailPath = jsonThumbnail[Constants.MarvelResponseKeys.Path] as? String
+            let thumbnailExtension = jsonThumbnail[Constants.MarvelResponseKeys.Extension] as? String
+            let characterURL = thumbnailPath! + "/portrait_large."  + thumbnailExtension! as String
+            
+            let cc = Character(title: title, detail: description, characterURL: characterURL)
+            DataSource.characters.append(cc)
+            
         }
     }
-            task.resume()
+    
+ 
+    
+    func isObjectNil(object: AnyObject!)->Bool{
+            if let _:AnyObject = object{
+                return false
+            }
+            return true
+        }
+    
+    
+    fileprivate func showLoadingHUD(){
+        let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
+         hud.labelText = "Loading..."
+    }
+    
+  
+    
+     fileprivate func hideLoadingHUD() {
         
-}
+        MBProgressHUD.hide(for: contentView, animated: true)
+        self.setUIEnabled(enabled: false)
+        self.tableView.reloadData()
+        
+        
+       
+    }
+    
+    
+
+//  Without using AnyLibray
+    
+//    private func getCharactersFromMarvel(){
+//           showLoadingHUD();
+//        
+//       let methodParameters = [Constants.MarvelParameterKeys.TS :Constants.MarvelParameterValues.ts,
+//                               Constants.MarvelParameterKeys.APIKey : Constants.MarvelParameterValues.APIKey,
+//                               Constants.MarvelParameterKeys.HASH:getHash()]
+//    
+//        let urlString = Constants.Marvel.APIBaseURL + escapedParameters(parameters: methodParameters as [String : AnyObject])
+//        print("The MARVEL url is : \(urlString)")
+//        
+//        let urlTempString = "http://gateway.marvel.com/v1/public/comics?ts=17&apikey=c30573ac063f8a33b1de98dffc550caf&hash=7f2feb587bc9e1e5353669b50619baaf&limit=5"
+//        let url=URL(string: urlTempString)!
+//        let request = URLRequest(url : url)
+//    
+//        let task = URLSession.shared.dataTask(with: request){(data,response, error) in
+//    
+//       // if an error occurs, print it
+//            func displayError(error: String){
+//                print(error)
+//                print("URL at time of error : \(url)")
+//                self.setUIEnabled(enabled: true)
+//                
+//            }
+//        if error == nil{
+//            if let data = data {
+//                let parsedResult :NSDictionary!
+//                do{
+//                    parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
+//                } catch {
+//                
+//                    displayError(error: "Could not parse the data JSON '\(data)'")
+//                    return
+//                }
+//                 // print (parsedResult)
+//               
+//                self.retrieveFromJSON(jsonObject: parsedResult)
+//                
+//                }
+//            
+//             self.hideLoadingHUD()
+//          
+//        }
+//    }
+//            task.resume()
+//        
+//}
     
     private func getHash()->String{
         // We can dynamically genereate hask value using 3rd party libary here
@@ -141,48 +201,34 @@ extension ListViewController : UITableViewDataSource,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return apps.count
+       
+        return DataSource.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! AppTableViewCell
         
-        let app = apps[indexPath.row]
+      let comicDetails = DataSource.characters[indexPath.row]
         
-        cell.app = app
+        cell.app = comicDetails
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-             let indexPath = tableView.indexPathForSelectedRow
-        print("The width of someResolution is 1 \(passCharacter.detail)")
-          passCharacter = apps[(indexPath?.row)!]
-        print("The width of someResolution is 2 \(passCharacter.detail)")
-            
-            performSegue(withIdentifier:"ShowDetailSegue", sender: self)
-          //  let selectedCharacter = self.apps[indexPath.row]
-         //   let detailVC = DetailViewController
-    
-        }
-    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         // Get the index path from the cell that was tapped
         let indexPath = tableView.indexPathForSelectedRow
-        // Get the Row of the Index Path and set as index
-        //let index = indexPath?.row
-        let app = apps[(indexPath?.row)!]
+        let app = DataSource.characters[(indexPath?.row)!]
+        
         if (segue.identifier == detailSegueIdentifier) {
-            print("The width of someResolution is \(app.detail)")
-        //    let nav=segue.destination as! UINavigationController
             // Get in touch with the DetailViewController
             let detailViewController = segue.destination as! DetailViewController
-            // Pass on the data to the Detail ViewController by setting it's indexPathRow value
-      
+          
             detailViewController.app = app
         }
         
