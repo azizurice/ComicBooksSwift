@@ -4,8 +4,6 @@ use_frameworks!
 
 target 'ComicBook' do
     pod 'Alamofire', '~> 4.0'
-    
-    pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
 
     pod 'MBProgressHUD', '~> 1.0.0'
 

@@ -1,15 +1,15 @@
 PODS:
-  - JSONJoy-Swift (2.0.1)
-  - SwiftHTTP (2.0.1)
+  - Alamofire (4.0.1)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
-  - JSONJoy-Swift (~> 2.0.1)
-  - SwiftHTTP (~> 2.0.0)
+  - Alamofire (~> 4.0)
+  - MBProgressHUD (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  JSONJoy-Swift: 9e3d2c20cadbfdd8cd56f1f4d5733d80ce2ffa09
-  SwiftHTTP: 6d57b54ee84d9ad9cf81b6bc1c4cae593e3f6329
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: f9530c6419365369b809d09a02da02c501a6d4a7
+PODFILE CHECKSUM: 8703060332fa2bcfb2a00d5cfd45aaf6abb6c042
 
 COCOAPODS: 1.1.1

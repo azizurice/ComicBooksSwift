@@ -18,36 +18,14 @@ struct ComicCharacter {
 struct TIBApps {
     static func getAllApps() -> [ComicCharacter] {
         return [
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "1"),
+            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "AlienHappy"),
             
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "2"),
+            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "AlienNormal"),
             
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "3"),
+            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "AlienToung")
             
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "4"),
             
 
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "5"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "6"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "7"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "8"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "9"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "10"),
-            
-
-            ComicCharacter(title: "Headsup Question Generator Game", detail: "beginner", imageName: "11")
             
 
             

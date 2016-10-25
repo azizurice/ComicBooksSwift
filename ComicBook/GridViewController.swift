@@ -66,22 +66,22 @@ extension GridViewController : UICollectionViewDataSource,UICollectionViewDelega
     }
     
     // MARK:- prepareForSegue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // retrieve selected cell & fruit
-        
-        if let indexPath = getIndexPathForSelectedCell() {
-            let app = apps[indexPath.row]
-            if (segue.identifier == detailSegueIdentifier) {
-                print("The width of someResolution is \(app.detail)")
-                //    let nav=segue.destination as! UINavigationController
-             
-                let detailViewController = segue.destination as! DetailViewController
-                // Pass on the data to the Detail ViewController by setting it's indexPathRow value
-                
-                detailViewController.app = app
-            }
-      }
-    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        // retrieve selected cell & fruit
+//        
+//        if let indexPath = getIndexPathForSelectedCell() {
+//            let app = apps[indexPath.row]
+//            if (segue.identifier == detailSegueIdentifier) {
+//                print("The width of someResolution is \(app.detail)")
+//                //    let nav=segue.destination as! UINavigationController
+//             
+//                let detailViewController = segue.destination as! DetailViewController
+//                // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+//                
+//                detailViewController.app = app
+//            }
+//      }
+//    }
 }

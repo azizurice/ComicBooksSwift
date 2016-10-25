@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6324312FB596F29D8B27798 /* Pods_ComicBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5330F58CE6DA95D3F283AA7 /* Pods_ComicBook.framework */; };
 		EC080A1D1DBC10AE00E64FA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A1C1DBC10AE00E64FA5 /* AppDelegate.swift */; };
 		EC080A1F1DBC10AE00E64FA5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A1E1DBC10AE00E64FA5 /* ListViewController.swift */; };
 		EC080A211DBC10AE00E64FA5 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A201DBC10AE00E64FA5 /* GridViewController.swift */; };
@@ -18,13 +19,13 @@
 		EC080A351DBC202D00E64FA5 /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A341DBC202D00E64FA5 /* AppTableViewCell.swift */; };
 		EC080A371DBC205F00E64FA5 /* AppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A361DBC205F00E64FA5 /* AppCollectionViewCell.swift */; };
 		EC080A391DBD3C4100E64FA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A381DBD3C4100E64FA5 /* Constants.swift */; };
-		EC080A3B1DBD4F3B00E64FA5 /* GCDBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A3A1DBD4F3B00E64FA5 /* GCDBox.swift */; };
 		EC080A3D1DBD564100E64FA5 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A3C1DBD564100E64FA5 /* Character.swift */; };
-		EC080A3F1DBD636500E64FA5 /* MD5Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A3E1DBD636500E64FA5 /* MD5Swift.swift */; };
 		EC080A811DBD86C800E64FA5 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC080A801DBD86C800E64FA5 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B1FCA60F7CDD2502045DA0B /* Pods-ComicBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComicBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComicBook/Pods-ComicBook.debug.xcconfig"; sourceTree = "<group>"; };
+		B5330F58CE6DA95D3F283AA7 /* Pods_ComicBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComicBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC080A191DBC10AD00E64FA5 /* ComicBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC080A1C1DBC10AE00E64FA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC080A1E1DBC10AE00E64FA5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -38,10 +39,10 @@
 		EC080A341DBC202D00E64FA5 /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		EC080A361DBC205F00E64FA5 /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC080A381DBD3C4100E64FA5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		EC080A3A1DBD4F3B00E64FA5 /* GCDBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBox.swift; sourceTree = "<group>"; };
 		EC080A3C1DBD564100E64FA5 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		EC080A3E1DBD636500E64FA5 /* MD5Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5Swift.swift; sourceTree = "<group>"; };
 		EC080A801DBD86C800E64FA5 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		ECB515A01DBF42D900219B15 /* ComicBook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComicBook-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBE40668690184EA698DD335 /* Pods-ComicBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComicBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComicBook/Pods-ComicBook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +50,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6324312FB596F29D8B27798 /* Pods_ComicBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BE2595EB39CFB0412C37891 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5330F58CE6DA95D3F283AA7 /* Pods_ComicBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1A8B99AB1D69EF597924153 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B1FCA60F7CDD2502045DA0B /* Pods-ComicBook.debug.xcconfig */,
+				FBE40668690184EA698DD335 /* Pods-ComicBook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EC080A101DBC10AD00E64FA5 = {
 			isa = PBXGroup;
 			children = (
 				EC080A1B1DBC10AD00E64FA5 /* ComicBook */,
 				EC080A1A1DBC10AD00E64FA5 /* Products */,
+				C1A8B99AB1D69EF597924153 /* Pods */,
+				6BE2595EB39CFB0412C37891 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,10 +107,9 @@
 				EC080A341DBC202D00E64FA5 /* AppTableViewCell.swift */,
 				EC080A361DBC205F00E64FA5 /* AppCollectionViewCell.swift */,
 				EC080A381DBD3C4100E64FA5 /* Constants.swift */,
-				EC080A3A1DBD4F3B00E64FA5 /* GCDBox.swift */,
 				EC080A3C1DBD564100E64FA5 /* Character.swift */,
 				EC080A801DBD86C800E64FA5 /* DataSource.swift */,
-				EC080A3E1DBD636500E64FA5 /* MD5Swift.swift */,
+				ECB515A01DBF42D900219B15 /* ComicBook-Bridging-Header.h */,
 			);
 			path = ComicBook;
 			sourceTree = "<group>";
@@ -101,9 +121,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC080A2D1DBC10AE00E64FA5 /* Build configuration list for PBXNativeTarget "ComicBook" */;
 			buildPhases = (
+				FC0440301B0D626F46842280 /* [CP] Check Pods Manifest.lock */,
 				EC080A151DBC10AD00E64FA5 /* Sources */,
 				EC080A161DBC10AD00E64FA5 /* Frameworks */,
 				EC080A171DBC10AD00E64FA5 /* Resources */,
+				83834418ED800406CC8184C3 /* [CP] Embed Pods Frameworks */,
+				D756333C4AA44EFCF502A808 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,6 +184,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		83834418ED800406CC8184C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ComicBook/Pods-ComicBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D756333C4AA44EFCF502A808 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ComicBook/Pods-ComicBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC0440301B0D626F46842280 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC080A151DBC10AD00E64FA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -169,13 +240,11 @@
 				EC080A211DBC10AE00E64FA5 /* GridViewController.swift in Sources */,
 				EC080A1D1DBC10AE00E64FA5 /* AppDelegate.swift in Sources */,
 				EC080A1F1DBC10AE00E64FA5 /* ListViewController.swift in Sources */,
-				EC080A3B1DBD4F3B00E64FA5 /* GCDBox.swift in Sources */,
 				EC080A371DBC205F00E64FA5 /* AppCollectionViewCell.swift in Sources */,
 				EC080A331DBC1B4600E64FA5 /* ComicCharacter.swift in Sources */,
 				EC080A811DBD86C800E64FA5 /* DataSource.swift in Sources */,
 				EC080A311DBC15D800E64FA5 /* DetailViewController.swift in Sources */,
 				EC080A3D1DBD564100E64FA5 /* Character.swift in Sources */,
-				EC080A3F1DBD636500E64FA5 /* MD5Swift.swift in Sources */,
 				EC080A351DBC202D00E64FA5 /* AppTableViewCell.swift in Sources */,
 				EC080A391DBD3C4100E64FA5 /* Constants.swift in Sources */,
 			);
@@ -298,6 +367,7 @@
 		};
 		EC080A2E1DBC10AE00E64FA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B1FCA60F7CDD2502045DA0B /* Pods-ComicBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ComicBook/Info.plist;
@@ -310,6 +380,7 @@
 		};
 		EC080A2F1DBC10AE00E64FA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE40668690184EA698DD335 /* Pods-ComicBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ComicBook/Info.plist;
